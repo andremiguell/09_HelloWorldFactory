@@ -19,13 +19,34 @@ public class HelloWorldFactory {
     private Display disp = null;
     
     //privado factory
-    private HelloWorldFactory() throws IOException {
+    private HelloWorldFactory() {
         props = new Properties();
         
         try {
             props.load(new FileInputStream("src/main/resources/hello.properties"));
-        } catch (FileNotFoundException ex) {
+            String displayClass = props.getProperty("Display.class");
+            String mensageiroClass = props.getProperty("Mensageiro.class");
+            msg = (Mensageiro) Class.forName(mensageiroClass).newInstance();
+            disp = (Display) Class.forName(displayClass).newInstance();
+            
+        } catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(HelloWorldFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    static {
+        instance = new HelloWorldFactory();
+    }
+    
+    public static HelloWorldFactory getInstance() {
+        return instance;
+    }
+    
+    public Display getDisplay() {
+        return disp;
+    }
+    
+    public Mensageiro getMensageiro() {
+        return msg;
     }
 }
