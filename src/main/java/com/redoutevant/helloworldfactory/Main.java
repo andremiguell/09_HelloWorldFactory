@@ -23,16 +23,19 @@ public class Main {
 //    }
     
 // versão 3
-    public static void main(String[] args) {
-        Display d = new DisplayImpl();
-        Mensageiro m = new MensageiroImpl();
-        
-        d.setMenssagem(m);
-        
-        try {
-            d.render();
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    public static void main(String[] args) {
+//        Display d = new DisplayImpl();
+//        Mensageiro m = new MensageiroImpl();
+//        
+//        d.setMenssagem(m);
+//        
+//        try {
+//            d.render();
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+    
+// versão 4
+    
 }
